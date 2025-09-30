@@ -1,9 +1,322 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>PersonaK's App - Redirecting...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonaK - 혁신적인 모바일 앱 개발</title>
+    <meta name="description" content="PersonaK에서 개발한 혁신적인 모바일 앱들을 만나보세요. AI 기술과 사용자 경험을 중심으로 한 앱들을 제공합니다.">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin: 20px 0 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        .intro {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .intro h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .intro p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        .apps-section {
+            margin: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .app-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        .app-card h3 {
+            color: #333;
+            margin: 20px 0 15px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .app-description {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .app-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .app-features li {
+            color: #555;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+        .app-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        .app-features li:last-child {
+            border-bottom: none;
+        }
+        .app-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .status-live {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+        .status-coming {
+            background-color: #fff3e0;
+            color: #f57c00;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .coming-soon {
+            opacity: 0.7;
+            position: relative;
+        }
+        .coming-soon::after {
+            content: '곧 출시 예정';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff9800;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        .footer {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .footer h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            color: #666;
+            margin: 10px 0;
+        }
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .container {
+                padding: 20px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="sayit_index.html">SayIt main page</a>...</p>
+    <div class="container">
+        <div class="header">
+            <div class="logo">PK</div>
+            <h1>PersonaK</h1>
+            <p class="tagline">혁신적인 모바일 앱으로 당신의 일상을 더 스마트하게</p>
+        </div>
+
+        <div class="intro">
+            <h2>🚀 PersonaK 앱 생태계에 오신 것을 환영합니다</h2>
+            <p>PersonaK는 <strong>AI 기술</strong>과 <strong>사용자 중심의 디자인</strong>을 바탕으로 일상을 더욱 편리하고 효율적으로 만드는 모바일 앱들을 개발합니다.</p>
+            <p>아래에서 저희가 정성껏 개발한 앱들을 둘러보시고, <strong>각 앱의 링크를 클릭</strong>하여 더 자세한 정보를 확인해보세요!</p>
+        </div>
+
+        <div class="apps-section">
+            <h2 class="section-title">📱 우리의 앱들</h2>
+            
+            <div class="apps-grid">
+                <!-- SayIt 앱 카드 -->
+                <a href="sayit_index.html" class="app-card">
+                    <div class="app-status status-live">출시됨</div>
+                    <div class="app-icon">🎤</div>
+                    <h3>SayIt</h3>
+                    <p class="app-description">음성을 텍스트로 간편하게 변환하는 스마트한 음성 메모 앱</p>
+                    <ul class="app-features">
+                        <li>AI 기반 정확한 음성 인식</li>
+                        <li>한국어/영어 완벽 지원</li>
+                        <li>실시간 음성-텍스트 변환</li>
+                        <li>스마트한 관리 시스템</li>
+                        <li>다크모드 지원</li>
+                    </ul>
+                    <div class="cta-button">SayIt 자세히 보기 →</div>
+                </a>
+
+                <!-- 향후 앱들 -->
+                <div class="app-card coming-soon">
+                    <div class="app-status status-coming">개발중</div>
+                    <div class="app-icon">📝</div>
+                    <h3>NoteAI</h3>
+                    <p class="app-description">AI가 도와주는 스마트 노트 앱으로 아이디어를 체계적으로 관리</p>
+                    <ul class="app-features">
+                        <li>AI 기반 자동 요약</li>
+                        <li>스마트 태그 분류</li>
+                        <li>음성/텍스트/이미지 통합</li>
+                        <li>실시간 협업 기능</li>
+                        <li>클라우드 동기화</li>
+                    </ul>
+                </div>
+
+                <div class="app-card coming-soon">
+                    <div class="app-status status-coming">기획중</div>
+                    <div class="app-icon">⏰</div>
+                    <h3>TimeFlow</h3>
+                    <p class="app-description">AI가 분석하는 개인 맞춤형 시간 관리 및 생산성 앱</p>
+                    <ul class="app-features">
+                        <li>AI 기반 시간 패턴 분석</li>
+                        <li>개인화된 일정 최적화</li>
+                        <li>집중도 추적 및 개선</li>
+                        <li>스마트 알림 시스템</li>
+                        <li>생산성 통계 분석</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h2>💬 PersonaK와 함께하세요</h2>
+            <p>더 나은 앱을 만들기 위해 여러분의 의견을 소중히 듣고 있습니다.</p>
+            
+            <div class="contact-info">
+                <p><strong>📧 이메일</strong>: <a href="mailto:sayit.app.support@gmail.com">personak.app@gmail.com</a></p>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 14px;">
+                <p>&copy; 2024 PersonaK. All rights reserved.</p>
+                <p>Made with ❤️ in Korea | 사용자의 더 나은 경험을 위해</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
